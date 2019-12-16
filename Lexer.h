@@ -21,12 +21,11 @@ class Lexer {
     while (std::getline(file, line)) {
       flag = 0;
       line = clearSpaces(line);
-      if(line == "")
-      {
+      if (line == "") {
         continue;
       }
       if (line.substr(0, 20) == "connectControlClient" || line.substr(0, 5) == "Sleep" ||
-               line.substr(0, 14) == "openDataServer" || line.substr(0, 5) == "Print") {
+          line.substr(0, 14) == "openDataServer" || line.substr(0, 5) == "Print") {
         flag = 1;
       }
       //if the line starts with var
@@ -34,7 +33,7 @@ class Lexer {
         finalList.insert(finalList.end(), "var");
         line.erase(0, 4);
         line = clearSpaces(line);
-        for (int i = 0; i < line.length(); i++) {
+        for (unsigned int i = 0; i < line.length(); i++) {
           if (line.at(i) == '-' && line.at(i + 1) == '>') {
             finalList.insert(finalList.end(), line.substr(0, i));
             line.erase(0, i);
@@ -52,7 +51,7 @@ class Lexer {
             flag = 1;
             continue;
           }
-          //if line looks like: "var x = ..." where x is the variable and ... is an expression
+            //if line looks like: "var x = ..." where x is the variable and ... is an expression
           else if (line.at(i) == '=') {
             finalList.insert(finalList.end(), line.substr(0, i));
             line.erase(0, i);
@@ -88,15 +87,14 @@ class Lexer {
         finalList.insert(finalList.end(), line);
         finalList.insert(finalList.end(), "{");
         continue;
-      }
-      else if (line == "}") {
+      } else if (line == "}") {
         finalList.insert(finalList.end(), line);
         continue;
       }
+
       //if flag == 1 it means the line currently looks like something(...)
       //assumption: there are no variables that their name is something like "PrintABC"
-      if(flag)
-      {
+      if (flag) {
         int count = 0;
         while (line[count] != '(') {
           count++;
@@ -119,12 +117,9 @@ class Lexer {
           }
           line = dealWithExpressions(line);
           finalList.insert(finalList.end(), line);
-        }
-        else
-        {
+        } else {
           //partOne is either sim, Print, openDataServer or Sleep in this case
-          if(line.at(0) != '"')
-          {
+          if (line.at(0) != '"') {
             line = dealWithExpressions(line);
           }
           finalList.insert(finalList.end(), line);
@@ -132,8 +127,7 @@ class Lexer {
         continue;
       }
       //in this case the line looks like "variable = expression"
-      else
-      {
+      else {
         int index = 0;
         while (line[index] != '=' && line[index] != ' ' && line[index] != '\t') {
           index++;
@@ -152,7 +146,7 @@ class Lexer {
     }
   }
 
-  void printall() {
+  void printAll() {
     for (auto it = finalList.begin(); it != finalList.end(); ++it) {
       std::cout << *it << std::endl;
     }
@@ -172,8 +166,7 @@ class Lexer {
   }
 
   //function that clears spaces and tabs that are in an expression
-  std::string dealWithExpressions(std::string exp)
-  {
+  std::string dealWithExpressions(std::string exp) {
     exp = clearSpaces(exp);
     //solution found from https://www.geeksforgeeks.org/remove-spaces-from-a-given-string/
     exp.erase(std::remove(exp.begin(), exp.end(), ' '), exp.end());
