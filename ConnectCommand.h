@@ -11,7 +11,7 @@
 class ConnectCommand : public Command {
 public:
     ~ConnectCommand() {};
-    int execute(string l);
+    int execute(list<string> l);
 };
 
 

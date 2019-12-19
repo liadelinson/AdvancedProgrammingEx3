@@ -10,6 +10,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <netinet/in.h>
+#include <list>
 
 #ifndef CPPEX3_COMMAND_H
 #define CPPEX3_COMMAND_H
@@ -21,7 +22,7 @@ class Command {
 public:
     Command() {};
     virtual ~Command() {}
-    virtual int execute(string) {};
+    virtual int execute(list<string> params) {};
 };
 
 #endif //CPPEX3_COMMAND_H

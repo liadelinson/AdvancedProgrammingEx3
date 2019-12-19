@@ -11,14 +11,17 @@ using namespace std;
 
 class VarTypes {
 public:
-    int _value;
+    double _value = 0;
     string _sim;
-    string _bindDirection;
+    string _direction;
 
-    VarTypes(int value, string sim, string bindDirection) {
+    VarTypes(string sim, string direction) {
         this->_sim = sim;
+        this->_direction = direction;
+    }
+
+    void updateValue(int value) {
         this->_value = value;
-        this->_bindDirection = bindDirection;
     }
 };
 

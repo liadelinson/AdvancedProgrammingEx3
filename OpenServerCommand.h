@@ -6,10 +6,11 @@
 #define CPPEX3_OPENSERVERCOMMAND_H
 
 #include "Command.h"
+#include <list>
 
 class OpenServerCommand : public Command {
     ~OpenServerCommand() {};
-    int execute(string l);
+    int execute(list<string> l);
 };
 
 

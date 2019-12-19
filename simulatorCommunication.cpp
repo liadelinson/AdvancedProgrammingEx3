@@ -12,8 +12,8 @@ bool simulatorCommunication::isOpen = false;
 
 using namespace std;
 
-bool simulatorCommunication::sendToServer(std::__cxx11::string st, double val) {
-    string command = "set" + Maps::getVarAddress(st) + " " + to_string(val) = " \r\n";
+bool simulatorCommunication::sendToServer(string st, double val) {
+    string command = "set " + st + " " + to_string(val) + " \r\n";
     int n = write(sockfd, command.c_str(), command.length());
     if (n < 0) {
         return false;

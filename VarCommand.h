@@ -10,7 +10,7 @@
 class VarCommand : public Command {
 public:
     ~VarCommand() {};
-    int execute(string l);
+    int execute(list<string> l);
 };
 
 

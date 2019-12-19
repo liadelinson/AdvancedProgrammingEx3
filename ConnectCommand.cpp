@@ -6,13 +6,18 @@
 #include "ConnectCommand.h"
 #include <netinet/in.h>
 #include <arpa/inet.h>>
+#include <list>
 #include <unistd.h>
 #include <sys/socket.h>
 
-int ConnectCommand::execute(string l) {
-    string ip = l.substr(0, l.find(","));
-    l.erase(0, l.find(",") + 1);
+using namespace std;
 
+int ConnectCommand::execute(list<string> l) {
+
+    list<string>::iterator it = l.begin();
+    string port = *it;
+    ++it;
+    string ip = *it;
 
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd == -1) {
@@ -20,10 +25,12 @@ int ConnectCommand::execute(string l) {
         exit(1);
     }
 
+    cout << "ip is " + ip + " and port is " + port << endl;
+
     sockaddr_in address;
     address.sin_family = AF_INET;
-    address.sin_addr.s_addr = inet_addr(ip.c_str());
-    address.sin_port = htons(stod(l));
+    address.sin_addr.s_addr = inet_addr("127.0.0.1");
+    address.sin_port = htons(stod(port));
 
     int is_connected = connect(sockfd, (struct sockaddr*) &address, sizeof(address));
     if (is_connected == -1) {
