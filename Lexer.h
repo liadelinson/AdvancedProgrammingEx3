@@ -35,7 +35,9 @@ class Lexer {
         line = clearSpaces(line);
         for (unsigned int i = 0; i < line.length(); i++) {
           if (line.at(i) == '-' && line.at(i + 1) == '>') {
-            finalList.insert(finalList.end(), line.substr(0, i));
+            std::string varName = line.substr(0, i);
+            varName = clearSpaces(varName);
+            finalList.insert(finalList.end(), varName);
             line.erase(0, i);
             finalList.insert(finalList.end(), "->");
             line.erase(0, 2);
@@ -43,7 +45,9 @@ class Lexer {
             flag = 1;
             continue;
           } else if (line.at(i) == '<' && line.at(i + 1) == '-') {
-            finalList.insert(finalList.end(), line.substr(0, i));
+            std::string varName = line.substr(0, i);
+            varName = clearSpaces(varName);
+            finalList.insert(finalList.end(), varName);
             line.erase(0, i);
             finalList.insert(finalList.end(), "<-");
             line.erase(0, 2);
