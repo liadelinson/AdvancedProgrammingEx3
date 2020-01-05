@@ -1,6 +1,3 @@
-//
-// Created by liad on 19/12/2019.
-//
 #include "ex1.h"
 
 double GreaterThan::calculate() {
@@ -12,5 +9,3 @@ double GreaterThan::calculate() {
     throw e;
   }
 }
-
-

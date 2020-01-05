@@ -14,4 +14,3 @@ double UMinus::calculate() {
     throw e;
   }
 }
-

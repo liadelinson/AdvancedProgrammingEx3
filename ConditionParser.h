@@ -1,21 +1,21 @@
-//
-// Created by sharon on 12/16/19.
-//
+#ifndef CONDITIONPARSER_H
+#define CONDITIONPARSER_H
 
-#ifndef CPPEX3_CONDITIONPARSER_H
-#define CPPEX3_CONDITIONPARSER_H
-
-#include <vector>
-#include <list>
 #include "Command.h"
 
-using namespace std;
-
 class ConditionParser : public Command {
-protected:
-    vector<Command> commands;
-    ConditionParser();
-    int execute(list<string> l);
+  string a;
+  string op;
+  string b;
+
+ public:
+  int execute(vector<string> cmdTemp, int index) override;
+  int conditionReader(vector<string> cmdLines, int index);
+  bool check();
+  string vectorToString(vector<string> vector, int index, int end);
+  int opCheck(vector<string> vector, int index);
+  virtual int enterKey(vector<string> vector, int index);
+  ~ConditionParser() override = default;
 };
 
-#endif //CPPEX3_CONDITIONPARSER_H
+#endif //CONDITIONPARSER_H

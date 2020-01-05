@@ -48,6 +48,3 @@ Variable &Variable::operator--() {
 double Variable::calculate() {
   return this->getValue();
 }
-
-
-

@@ -1,18 +1,17 @@
-//
-// Created by sharon on 12/15/19.
-//
+#ifndef CONNECTCOMMAND_H
+#define CONNECTCOMMAND_H
 
-#ifndef CPPEX3_CONNECTCOMMAND_H
-#define CPPEX3_CONNECTCOMMAND_H
-
-#include <vector>
 #include "Command.h"
 
 class ConnectCommand : public Command {
-public:
-    ~ConnectCommand() {};
-    int execute(list<string> l);
+
+ public:
+  int execute(vector<string> cmdTemp, int index) override;
+  void connectSocket(int port, string ip);
+  static void *updateVal(void *args);
+  int enterKey(vector<string> cmdTemp, int index);
+  string vectorToString(vector<string> vector, int index, int end);
+  ~ConnectCommand() override = default;
 };
 
-
-#endif //CPPEX3_CONNECTCOMMAND_H
+#endif //CONNECTCOMMAND_H

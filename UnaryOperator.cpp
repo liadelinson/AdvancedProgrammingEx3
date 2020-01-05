@@ -12,4 +12,3 @@ double UnaryOperator::calculate() {
 UnaryOperator::~UnaryOperator() {
   delete exp;
 }
-

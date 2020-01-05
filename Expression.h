@@ -1,5 +1,5 @@
-#ifndef PROJECT_EXPRESSION_H
-#define PROJECT_EXPRESSION_H
+#ifndef EXPRESSION_H
+#define EXPRESSION_H
 
 using namespace std;
 /**
@@ -12,4 +12,4 @@ class Expression {
   virtual ~Expression() {}
 };
 
-#endif //PROJECT_EXPRESSION_H
+#endif //EXPRESSION_H

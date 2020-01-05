@@ -1,15 +1,13 @@
-//
-// Created by sharon on 12/17/19.
-//
-
-#ifndef CPPEX3_SLEEPCOMMAND_H
-#define CPPEX3_SLEEPCOMMAND_H
+#ifndef SLEEPCOMMAND_H
+#define SLEEPCOMMAND_H
 
 #include "Command.h"
 
 class SleepCommand : public Command {
-    int execute(list<string> l);
+ public:
+  int execute(vector<string> cmdTemp, int index) override;
+  string vectorToString(vector<string> vector, int index, int end);
+  int enterKey(vector<string> vector, int index);
+
 };
-
-
-#endif //CPPEX3_SLEEPCOMMAND_H
+#endif //SLEEPCOMMAND_H

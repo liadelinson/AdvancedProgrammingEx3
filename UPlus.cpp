@@ -9,6 +9,3 @@ double UPlus::calculate() {
     throw e;
   }
 }
-
-
-

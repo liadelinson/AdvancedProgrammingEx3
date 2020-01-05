@@ -1,12 +1,8 @@
-
-#include <string>
+#include "ex1.h"
 #include <stack>
 #include <queue>
-#include "ex1.h"
 
-using namespace std;
-
-void Interpreter::setVariables(std::string str) {
+void Interpreter::setVariables(string str) {
   string dataV(str); //converting str to String
   string separator(";"); //variables are separated with ";"
   int pos = 0;//shows current position of the string. size_t is common for array indexing and loop counting
@@ -28,7 +24,6 @@ void Interpreter::setVariables(std::string str) {
       catch (const std::invalid_argument &e) {
         //variable isn't inserted to map because it's invalid
       }
-
     } else if (variables.count(var) == 1) {
       try {
         variables[var] = stod(value); //updating value of existing variable
@@ -37,14 +32,13 @@ void Interpreter::setVariables(std::string str) {
         //the "value" isn't a number, so I'll remove the variable from the map
         variables.erase(var);
       }
-
     }
     dataV.erase(0, pos + separator.length()); //goes to next Variable
     pos = 0;
   }
 }
 
-Expression *Interpreter::interpret(std::string str) {
+Expression *Interpreter::interpret(string str) {
   string dataE = string(str); //str as string, will be shorten in the while loop
   string originalE = string(str); //str as string, will stay the same, with no changes
   queue<string> outputQueue; //the output of shunting yard algorithm, will be used at the end too
@@ -69,8 +63,7 @@ Expression *Interpreter::interpret(std::string str) {
             (operatorStack.top() == "*" || operatorStack.top() == "/")) {
           outputQueue.push(operatorStack.top());
           operatorStack.pop();
-          if(operatorStack.empty())
-          {
+          if (operatorStack.empty()) {
             break;
           }
         }
@@ -100,8 +93,7 @@ Expression *Interpreter::interpret(std::string str) {
               (operatorStack.top() == "+" || operatorStack.top() == "-")) {
             outputQueue.push(operatorStack.top());
             operatorStack.pop();
-            if(operatorStack.empty())
-            {
+            if (operatorStack.empty()) {
               break;
             }
           }
@@ -148,8 +140,7 @@ Expression *Interpreter::interpret(std::string str) {
               (operatorStack.top() == "+" || operatorStack.top() == "-")) {
             outputQueue.push(operatorStack.top());
             operatorStack.pop();
-            if(operatorStack.empty())
-            {
+            if (operatorStack.empty()) {
               break;
             }
           }
@@ -172,8 +163,7 @@ Expression *Interpreter::interpret(std::string str) {
             (operatorStack.top() == ">=" || operatorStack.top() == "<=")) {
           outputQueue.push(operatorStack.top());
           operatorStack.pop();
-          if(operatorStack.empty())
-          {
+          if (operatorStack.empty()) {
             break;
           }
         }
@@ -190,8 +180,7 @@ Expression *Interpreter::interpret(std::string str) {
             (operatorStack.top() == ">=" || operatorStack.top() == "<=")) {
           outputQueue.push(operatorStack.top());
           operatorStack.pop();
-          if(operatorStack.empty())
-          {
+          if (operatorStack.empty()) {
             break;
           }
         }
@@ -199,7 +188,6 @@ Expression *Interpreter::interpret(std::string str) {
       operatorStack.push(dataE.substr(0, 2));
       curPos += 2;
       dataE = dataE.substr(2);
-
     } else if (dataE.substr(0, 1) == ">" || dataE.substr(0, 1) == "<") {
       if (!operatorStack.empty()) {
         while ((operatorStack.top() == "UPlus" || operatorStack.top() == "UMinus") ||
@@ -209,8 +197,7 @@ Expression *Interpreter::interpret(std::string str) {
             (operatorStack.top() == ">=" || operatorStack.top() == "<=")) {
           outputQueue.push(operatorStack.top());
           operatorStack.pop();
-          if(operatorStack.empty())
-          {
+          if (operatorStack.empty()) {
             break;
           }
         }
@@ -239,7 +226,7 @@ Expression *Interpreter::interpret(std::string str) {
       }
     } else {
       //for variables
-      int indexV = 1;
+      unsigned int indexV = 1;
       while (dataE.substr(indexV - 1, 1) != "+" && dataE.substr(indexV - 1, 1) != "-" &&
           dataE.substr(indexV - 1, 1) != "*" && dataE.substr(indexV - 1, 1) != "/" &&
           dataE.substr(indexV - 1, 2) != "==" && dataE.substr(indexV - 1, 2) != "!=" &&
@@ -247,6 +234,9 @@ Expression *Interpreter::interpret(std::string str) {
           dataE.substr(indexV - 1, 1) != ">" && dataE.substr(indexV - 1, 1) != "<" &&
           dataE.substr(indexV - 1, 1) != "(" && dataE.substr(indexV - 1, 1) != ")") {
         indexV++;
+        if (indexV > dataE.length()) {
+          break;
+        }
       }
       //checking if the current variable is actually a variable in the map of variables:
       if (variables.count(dataE.substr(0, indexV - 1)) > 0) {
@@ -323,6 +313,3 @@ Expression *Interpreter::interpret(std::string str) {
   }//using the outputQueue
   return expressions.top();
 }
-
-
-

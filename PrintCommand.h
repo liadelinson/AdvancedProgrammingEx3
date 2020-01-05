@@ -1,15 +1,14 @@
-//
-// Created by sharon on 12/17/19.
-//
-
-#ifndef CPPEX3_PRINTCOMMAND_H
-#define CPPEX3_PRINTCOMMAND_H
+#ifndef PRINTCOMMAND_H
+#define PRINTCOMMAND_H
 
 #include "Command.h"
 
 class PrintCommand : public Command {
-    int execute(list<string> l);
+ public:
+  virtual int execute(vector<string> cmdTemp, int index) override;
+  void printMeth(string message);
+  string vectorToString(vector<string> vector, int index, int end);
+  int enterKey(vector<string> vector, int index);
+  ~PrintCommand() override = default;
 };
-
-
-#endif //CPPEX3_PRINTCOMMAND_H
+#endif //PRINTCOMMAND_H

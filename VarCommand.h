@@ -1,17 +1,17 @@
-//
-// Created by sharon on 12/15/19.
-//
-
-#ifndef CPPEX3_VARCOMMAND_H
-#define CPPEX3_VARCOMMAND_H
+#ifndef VARCOMMAND_H
+#define VARCOMMAND_H
 
 #include "Command.h"
 
 class VarCommand : public Command {
-public:
-    ~VarCommand() {};
-    int execute(list<string> l);
+ public:
+  int execute(vector<string> cmdTemp, int index) override;
+  void bind(string location, string var);
+  void toSim(string location, string var);
+  void bindSet(string var, string value);
+  int enterKey(vector<string> cmdTemp, int index);
+  string vectorToString(vector<string> vector, int i, int anEnd);
+  ~VarCommand() override = default;
 };
 
-
-#endif //CPPEX3_VARCOMMAND_H
+#endif //VARCOMMAND_H

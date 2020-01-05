@@ -9,4 +9,3 @@ double Mul::calculate() {
     throw e;
   }
 }
-

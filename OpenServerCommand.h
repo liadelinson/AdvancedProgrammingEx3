@@ -1,17 +1,20 @@
-//
-// Created by sharon on 12/15/19.
-//
-
-#ifndef CPPEX3_OPENSERVERCOMMAND_H
-#define CPPEX3_OPENSERVERCOMMAND_H
+#ifndef OPENSERVERCOMMAND_H
+#define OPENSERVERCOMMAND_H
 
 #include "Command.h"
-#include <list>
 
-class OpenServerCommand : public Command {
-    ~OpenServerCommand() {};
-    int execute(list<string> l);
+class OpenServerCommand: public Command {
+public:
+    // pure virtual function
+    virtual int execute(vector<string> cmdTemp, int index);
+    void openSocket(int port);
+    static void *runServer(void *args);
+    static vector<double> buffToDouble(string buffer);
+    static void updateTable(vector<double> temp);
+    int enterKey(vector<string> vec, int index);
+    string vectorToString(vector<string> vector, int index, int end);
+    ~OpenServerCommand() override = default;
 };
 
 
-#endif //CPPEX3_OPENSERVERCOMMAND_H
+#endif //OPENSERVERCOMMAND_H

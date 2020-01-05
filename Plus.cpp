@@ -9,4 +9,3 @@ double Plus::calculate() {
     throw e;
   }
 }
-

@@ -9,4 +9,3 @@ double Minus::calculate() {
     throw e;
   }
 }
-

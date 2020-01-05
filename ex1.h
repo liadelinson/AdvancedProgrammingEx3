@@ -1,5 +1,5 @@
-#ifndef EX1_EX1_H
-#define EX1_EX1_H
+#ifndef EX1_H
+#define EX1_H
 
 #include "Expression.h"
 #include <string>
@@ -16,10 +16,10 @@ class Value : public Expression {
 
 class Variable : public Expression {
  private:
-  std::string name; //name of variable
+  string name; //name of variable
   double value; //value of variable
  public:
-  Variable(std::string n, double v); //constructor that gets the name and the value of the Variable
+  Variable(string n, double v); //constructor that gets the name and the value of the Variable
   double getValue();
   Variable &operator++(int x); // overloading postfix ++
   Variable &operator--(int x); // overloading postfix --
@@ -98,7 +98,6 @@ class Div : public BinaryOperator {
   double calculate() override; //returns the result of this Div expression
 };
 
-
 //EqualTo - basically represents left == right
 class EqualTo : public BinaryOperator {
  public:
@@ -147,12 +146,10 @@ class LessOrEqual : public BinaryOperator {
   double calculate() override; //returns the result of this LessOrEqual expression
 };
 
-
-
 class Interpreter {
  private:
   //map of variables (keys are names, values are the values of variables), changed by setVariables
-  std::map<std::string, double> variables;
+  map<std::string, double> variables;
 
  public:
   void setVariables(std::string str); //add variables or change values if it's possible and valid
@@ -161,4 +158,4 @@ class Interpreter {
   Expression *interpret(std::string str);
 };
 
-#endif //EX1_EX1_H
+#endif //EX1_H

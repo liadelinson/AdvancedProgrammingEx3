@@ -1,28 +1,16 @@
-//
-// Created by sharon on 12/11/19.
-//
+#ifndef COMMAND_H
+#define COMMAND_H
 
-
-#include "Lexer.h"
-#include <thread>
-#include <sys/socket.h>
 #include <string>
-#include <iostream>
-#include <unistd.h>
-#include <netinet/in.h>
-#include <list>
-
-#ifndef CPPEX3_COMMAND_H
-#define CPPEX3_COMMAND_H
+#include <vector>
 
 using namespace std;
 
-
 class Command {
-public:
-    Command() {};
-    virtual ~Command() {}
-    virtual int execute(list<string> params) {};
+ public:
+  // pure virtual function
+  virtual int execute(vector<string> cmdTemp, int index) = 0;
+  virtual ~Command() = default;
 };
 
-#endif //CPPEX3_COMMAND_H
+#endif //COMMAND_H

@@ -1,15 +1,13 @@
-//
-// Created by sharon on 12/16/19.
-//
-
-#ifndef CPPEX3_IFCOMMAND_H
-#define CPPEX3_IFCOMMAND_H
+#ifndef IFCOMMAND_H
+#define IFCOMMAND_H
 
 #include "ConditionParser.h"
 
 class IfCommand : public ConditionParser {
-
+ public:
+  int execute(vector<string> cmdTemp, int index) override;
+  int enterKey(vector<string> vector, int index) override;
+  ~IfCommand() override = default;
 };
 
-
-#endif //CPPEX3_IFCOMMAND_H
+#endif //IFCOMMAND_H
