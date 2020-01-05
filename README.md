@@ -79,7 +79,7 @@ compiling and then running by writing "./a.out file_name"
     
 
 ## GitHub
-link to Github: https://github.com/liadelinson/AdvancedProgrammingEx3
+link to GitHub: https://github.com/liadelinson/AdvancedProgrammingEx3
  
   
   
