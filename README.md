@@ -80,4 +80,5 @@ compiling and then running by writing "./a.out file_name"
 
 ## GitHub
 link to GitHub: https://github.com/liadelinson/AdvancedProgrammingEx3
+The lastest commit looks "clean", but the files were shared by regular commits and by zip files as reflected in previous commits. The usage of zip files was convenient for us, while working on the project and practical for avoiding conflicts.
 
